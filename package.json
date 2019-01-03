@@ -26,7 +26,17 @@
     "prepublish": "yarn qa",
     "qa": "yarn test && yarn lint",
     "release": "standard-version",
-    "test": "echo \"not yet implemented\""
+    "test": "jest test"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "lib/**/*.js"
+    ],
+    "moduleNameMapper": {
+      "^now-we-test(.*)$": "<rootDir>/lib$1"
+    },
+    "testEnvironment": "node"
   },
   "dependencies": {
     "@now/node": "^0.4.27"
@@ -37,6 +47,7 @@
     "console-suppress": "^0.1.1",
     "eslint": "^4.19.1",
     "eslint-config-taller": "^2.0.0",
+    "jest": "^23.6.0",
     "standard-version": "^4.4.0"
   },
   "peerDependencies": {
