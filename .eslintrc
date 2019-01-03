@@ -1,0 +1,10 @@
+{
+  "extends": ["taller"],
+  "rules": {
+    "no-unused-expressions": "off",
+    "import/prefer-default-export": 0
+  },
+  "globals": {
+    "jest": false
+  }
+}
