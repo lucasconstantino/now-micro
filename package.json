@@ -1,0 +1,50 @@
+{
+  "name": "now-micro",
+  "description": "The missing Micro builder for Now 2.0",
+  "version": "0.1.0",
+  "author": "Lucas Constantino Silva <lucasconstantinosilva@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/lucasconstantino/now-micro/issues"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "codecov": "^3.0.2",
+    "console-suppress": "^0.1.1",
+    "eslint": "^4.19.1",
+    "eslint-config-taller": "^2.0.0",
+    "jest": "^23.1.0",
+    "standard-version": "^4.4.0"
+  },
+  "homepage": "https://github.com/lucasconstantino/now-micro#readme",
+  "jest": {
+    "testEnvironment": "node",
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "lib/**/*.js"
+    ],
+    "moduleNameMapper": {
+      "^now-micro(.*)$": "<rootDir>/lib$1"
+    }
+  },
+  "jsnext:main": "./lib/index.js",
+  "keywords": [
+    "now",
+    "builder",
+    "micro"
+  ],
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "module": "./lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucasconstantino/now-micro.git"
+  },
+  "scripts": {
+    "codecov": "yarn test && codecov",
+    "qa": "yarn test && yarn lint",
+    "test": "jest",
+    "lint": "eslint lib",
+    "prepublish": "yarn qa",
+    "release": "standard-version"
+  }
+}
