@@ -1,10 +1,32 @@
 {
   "name": "now-micro",
-  "description": "The missing Micro builder for Now 2.0",
   "version": "0.2.13",
-  "author": "Lucas Constantino Silva <lucasconstantinosilva@gmail.com>",
+  "description": "The missing Micro builder for Now 2.0",
+  "keywords": [
+    "builder",
+    "micro",
+    "now"
+  ],
+  "homepage": "https://github.com/lucasconstantino/now-micro#readme",
   "bugs": {
     "url": "https://github.com/lucasconstantino/now-micro/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucasconstantino/now-micro.git"
+  },
+  "license": "MIT",
+  "author": "Lucas Constantino Silva <lucasconstantinosilva@gmail.com>",
+  "main": "./builder.js",
+  "module": "./builder.js",
+  "jsnext:main": "./builder.js",
+  "scripts": {
+    "codecov": "yarn test && codecov",
+    "lint": "eslint lib",
+    "prepublish": "yarn qa",
+    "qa": "yarn test && yarn lint",
+    "release": "standard-version",
+    "test": "echo \"not yet implemented\""
   },
   "dependencies": {
     "@now/node": "^0.4.27"
@@ -16,28 +38,6 @@
     "eslint": "^4.19.1",
     "eslint-config-taller": "^2.0.0",
     "standard-version": "^4.4.0"
-  },
-  "homepage": "https://github.com/lucasconstantino/now-micro#readme",
-  "jsnext:main": "./builder.js",
-  "keywords": [
-    "now",
-    "builder",
-    "micro"
-  ],
-  "license": "MIT",
-  "main": "./builder.js",
-  "module": "./builder.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lucasconstantino/now-micro.git"
-  },
-  "scripts": {
-    "codecov": "yarn test && codecov",
-    "qa": "yarn test && yarn lint",
-    "test": "echo \"not yet implemented\"",
-    "lint": "eslint lib",
-    "prepublish": "yarn qa",
-    "release": "standard-version"
   },
   "peerDependencies": {
     "@now/build-utils": "^0.4.31"
