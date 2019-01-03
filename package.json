@@ -34,7 +34,7 @@
       "lib/**/*.js"
     ],
     "moduleNameMapper": {
-      "^now-we-test(.*)$": "<rootDir>/lib$1"
+      "^now-micro(.*)$": "<rootDir>/$1"
     },
     "testEnvironment": "node"
   },
