@@ -15,29 +15,18 @@
     "console-suppress": "^0.1.1",
     "eslint": "^4.19.1",
     "eslint-config-taller": "^2.0.0",
-    "jest": "^23.1.0",
     "standard-version": "^4.4.0"
   },
   "homepage": "https://github.com/lucasconstantino/now-micro#readme",
-  "jest": {
-    "testEnvironment": "node",
-    "collectCoverage": true,
-    "collectCoverageFrom": [
-      "lib/**/*.js"
-    ],
-    "moduleNameMapper": {
-      "^now-micro(.*)$": "<rootDir>/lib$1"
-    }
-  },
-  "jsnext:main": "./lib/index.js",
+  "jsnext:main": "./builder.js",
   "keywords": [
     "now",
     "builder",
     "micro"
   ],
   "license": "MIT",
-  "main": "./lib/index.js",
-  "module": "./lib/index.js",
+  "main": "./builder.js",
+  "module": "./builder.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lucasconstantino/now-micro.git"

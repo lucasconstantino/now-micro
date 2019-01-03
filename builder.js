@@ -1,9 +1,13 @@
 const FileBlob = require('@now/build-utils/file-blob')
 const { build: nodeBuild, prepareCache, config } = require('@now/node')
 
-module.exports.prepareCache = prepareCache
+// re-export equivalent assets
 module.exports.config = config
+module.exports.prepareCache = prepareCache
 
+/**
+ * Now.sh builder for micro-compatible lambdas.
+ */
 module.exports.build = async (context, ...args) => {
   const { entrypoint } = context
 
@@ -13,17 +17,21 @@ module.exports.build = async (context, ...args) => {
   const content = `
     ${data.toString()}
 
-    const { run: __micro_run } = require('micro')
+    let __original_lambda
 
-    let __original_lambda = typeof exports === 'function' ? exports : module.exports
-
-    if (typeof __original_lambda !== 'function') {
+    if (typeof exports === 'function') {
+      __original_lambda = exports
+    }
+    else if (typeof module.exports === 'function) {
+      __original_lambda = module.exports
+    }
+    else {
       throw new Error(
-        \`now-micro expect maind export to be a function (\${ typeof __original_lambda } given)\`,
+        \`now-micro builder expects main export to be a function (\${typeof module.exports} found)\`,
       )
     }
 
-    exports = module.exports = (req, res) => __micro_run(req, res, __original_lambda)
+    exports = module.exports = (req, res) => require('micro').run(req, res, __original_lambda)
   `
 
   const result = new FileBlob({ data: content })
@@ -31,5 +39,6 @@ module.exports.build = async (context, ...args) => {
   // override entrypoint file
   context.files[entrypoint] = result
 
+  // delegate to @now/node the rest of the building process
   return nodeBuild(context, ...args)
 }
