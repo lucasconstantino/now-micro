@@ -49,5 +49,8 @@
     "lint": "eslint lib",
     "prepublish": "yarn qa",
     "release": "standard-version"
+  },
+  "peerDependencies": {
+    "@now/build-utils": "^0.4.31"
   }
 }
