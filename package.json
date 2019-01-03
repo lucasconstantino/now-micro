@@ -1,7 +1,7 @@
 {
   "name": "now-micro",
   "description": "The missing Micro builder for Now 2.0",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "Lucas Constantino Silva <lucasconstantinosilva@gmail.com>",
   "bugs": {
     "url": "https://github.com/lucasconstantino/now-micro/issues"
@@ -10,6 +10,7 @@
     "@now/node": "^0.4.27"
   },
   "devDependencies": {
+    "@now/build-utils": "^0.4.31",
     "codecov": "^3.0.2",
     "console-suppress": "^0.1.1",
     "eslint": "^4.19.1",
