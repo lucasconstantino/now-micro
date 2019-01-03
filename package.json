@@ -6,7 +6,9 @@
   "bugs": {
     "url": "https://github.com/lucasconstantino/now-micro/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@now/node": "^0.4.27"
+  },
   "devDependencies": {
     "codecov": "^3.0.2",
     "console-suppress": "^0.1.1",
