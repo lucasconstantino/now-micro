@@ -48,7 +48,9 @@
     "eslint": "^4.19.1",
     "eslint-config-taller": "^2.0.0",
     "jest": "^23.6.0",
-    "standard-version": "^4.4.0"
+    "now-we-test": "^0.4.0",
+    "standard-version": "^4.4.0",
+    "tmp": "^0.0.33"
   },
   "peerDependencies": {
     "@now/build-utils": "^0.4.31"
