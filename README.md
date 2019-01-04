@@ -12,7 +12,9 @@ As of now, `@now/node` lambdas resemble a lot a [Micro](https://github.com/zeit/
 
 ## Installation
 
-`yarn add now-micro`
+`yarn add now-micro micro`
+
+> Gotcha: so far we found no way to inject `micro` dependency during the build process, so it MUST be a dependency of your lambda, thus why we added it to the above command ;)
 
 ## Usage
 
