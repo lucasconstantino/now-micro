@@ -21,7 +21,8 @@ describe('now-micro', () => {
 
   const entrypoints = [
     path.join(rootPath, '/index.js'),
-    path.join(rootPath, '/invalid.js')
+    path.join(rootPath, '/invalid.js'),
+    path.join(rootPath, '/error.js')
   ]
 
   const getContext = (entrypoint, config = {}) => ({
@@ -100,12 +101,20 @@ describe('now-micro', () => {
       )
     })
 
-    it('should execute a micro-based lambda', async () => {
+    it('should execute an http valid lambda', async () => {
       const runner = lambda(await compile(entrypoints[0]))
       const result = await runner.get('/')
 
       expect(result).toHaveProperty('status', 200)
       expect(result).toHaveProperty('text', 'cow:RANDOMNESS_PLACEHOLDER')
+    })
+
+    it('should execute an error throwing lambda', async () => {
+      const runner = lambda(await compile(entrypoints[2]))
+      const result = await runner.get('/')
+
+      expect(result).toHaveProperty('status', 429)
+      expect(result).toHaveProperty('text', 'Rate limit exceeded')
     })
   })
 })
