@@ -21,8 +21,7 @@ describe('now-micro', () => {
 
   const entrypoints = [
     path.join(rootPath, '/index.js'),
-    path.join(rootPath, '/invalid.js'),
-    path.join(rootPath, '/subdirectory/index.js')
+    path.join(rootPath, '/invalid.js')
   ]
 
   const getContext = (entrypoint, config = {}) => ({
