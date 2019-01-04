@@ -31,7 +31,7 @@
   "jest": {
     "collectCoverage": true,
     "collectCoverageFrom": [
-      "lib/**/*.js"
+      "*.js"
     ],
     "moduleNameMapper": {
       "^now-micro(.*)$": "<rootDir>/$1"
