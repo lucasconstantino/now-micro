@@ -11,6 +11,7 @@ const FileBlob = require('@now/build-utils/file-blob')
 const FileFsRef = require('@now/build-utils/file-fs-ref')
 const microBuilder = require('now-micro')
 const { lambda } = require('now-we-test')
+const console = require('console-suppress').default
 
 const { build } = microBuilder
 
@@ -23,7 +24,8 @@ describe('now-micro', () => {
     path.join(rootPath, '/index.js'),
     path.join(rootPath, '/invalid.js'),
     path.join(rootPath, '/error.js'),
-    path.join(rootPath, '/returning.js')
+    path.join(rootPath, '/returning.js'),
+    path.join(rootPath, '/async.js')
   ]
 
   const getContext = (entrypoint, config = {}) => ({
@@ -42,6 +44,9 @@ describe('now-micro', () => {
   beforeEach(() => {
     // eslint-disable-next-line no-sync
     tempDir = tmp.dirSync()
+
+    // cleanup suppressors
+    console.cleanSuppressors()
   })
 
   afterEach(() => {
@@ -107,15 +112,17 @@ describe('now-micro', () => {
       const result = await runner.get('/')
 
       expect(result).toHaveProperty('status', 200)
-      expect(result).toHaveProperty('text', 'cow:RANDOMNESS_PLACEHOLDER')
+      expect(result).toHaveProperty('text', 'SIMPLE HTTP LAMBDA')
     })
 
     it('should execute an error throwing lambda', async () => {
+      console.error.suppress(/ERROR THROWING LAMBDA/)
+
       const runner = lambda(await compile(entrypoints[2]))
       const result = await runner.get('/')
 
-      expect(result).toHaveProperty('status', 429)
-      expect(result).toHaveProperty('text', 'Rate limit exceeded')
+      expect(result).toHaveProperty('status', 400)
+      expect(result).toHaveProperty('text', 'ERROR THROWING LAMBDA')
     })
 
     it('should execute a value returning lambda', async () => {
@@ -123,10 +130,15 @@ describe('now-micro', () => {
       const result = await runner.get('/')
 
       expect(result).toHaveProperty('status', 200)
-      expect(result).toHaveProperty(
-        'text',
-        'cow:RANDOMNESS_RETURNED_PLACEHOLDER'
-      )
+      expect(result).toHaveProperty('text', 'VALUE RETURNING LAMBDA')
+    })
+
+    it('should execute an async lambda', async () => {
+      const runner = lambda(await compile(entrypoints[4]))
+      const result = await runner.get('/')
+
+      expect(result).toHaveProperty('status', 200)
+      expect(result).toHaveProperty('text', 'ASYNC LAMBDA')
     })
   })
 })

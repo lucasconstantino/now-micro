@@ -52,6 +52,7 @@
     "jest": "^23.6.0",
     "now-we-test": "^0.4.0",
     "standard-version": "^4.4.0",
+    "then-sleep": "^1.0.1",
     "tmp": "^0.0.33"
   },
   "peerDependencies": {

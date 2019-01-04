@@ -1,3 +1,3 @@
 module.exports = (req, res) => {
-  res.end('cow:RANDOMNESS_PLACEHOLDER')
+  res.end('SIMPLE HTTP LAMBDA')
 }
