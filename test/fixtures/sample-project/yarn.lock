@@ -130,6 +130,11 @@ micro@^9.3.3:
     is-stream "1.1.0"
     raw-body "2.3.2"
 
+native-or-bluebird@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/native-or-bluebird/-/native-or-bluebird-1.2.0.tgz#39c47bfd7825d1fb9ffad32210ae25daadf101c9"
+  integrity sha1-OcR7/Xgl0fuf+tMiEK4l2q3xAck=
+
 now-micro@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/now-micro/-/now-micro-0.3.0.tgz#34a53d258a7661dcc8a6a29f0349a6ad85d0fc73"
@@ -163,6 +168,13 @@ supports-color@^5.3.0:
   integrity sha512-QjVjwdXIt408MIiAqCX4oUKsgU2EqAGzs2Ppkm4aQYbjm+ZEWEcW4SfFNTr4uMNZma0ey4f5lgLrkB0aX0QMow==
   dependencies:
     has-flag "^3.0.0"
+
+then-sleep@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/then-sleep/-/then-sleep-1.0.1.tgz#759823bdc4de56ba2a20812868eb872a803ed1f9"
+  integrity sha1-dZgjvcTeVroqIIEoaOuHKoA+0fk=
+  dependencies:
+    native-or-bluebird "^1.2.0"
 
 universalify@^0.1.0:
   version "0.1.2"
