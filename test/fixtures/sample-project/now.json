@@ -3,6 +3,7 @@
   "builds": [
     { "src": "index.js", "use": "now-micro" },
     { "src": "invalid.js", "use": "now-micro" },
-    { "src": "error.js", "use": "now-micro" }
+    { "src": "error.js", "use": "now-micro" },
+    { "src": "returning.js", "use": "now-micro" }
   ]
 }
