@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "micro": "^9.3.3",
     "now-micro": "^0.3.0"
   }
 }
