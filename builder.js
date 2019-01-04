@@ -7,6 +7,8 @@ module.exports.prepareCache = prepareCache
 
 /**
  * Now.sh builder for micro-compatible lambdas.
+ *
+ * @TODO: should ensure package.json contains micro dependency.
  */
 module.exports.build = async (context, ...args) => {
   const { entrypoint } = context
@@ -14,15 +16,13 @@ module.exports.build = async (context, ...args) => {
   const stream = context.files[entrypoint].toStream()
   const { data } = await FileBlob.fromStream({ stream })
 
-  const content = `
-    ${data.toString()}
-
+  const content = `${data.toString()}
     let __original_lambda
 
     if (typeof exports === 'function') {
       __original_lambda = exports
     }
-    else if (typeof module.exports === 'function) {
+    else if (typeof module.exports === 'function') {
       __original_lambda = module.exports
     }
     else {
