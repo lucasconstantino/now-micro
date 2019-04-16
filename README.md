@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/lucasconstantino/now-micro.svg?branch=master)](https://travis-ci.org/lucasconstantino/now-micro)
 [![coverage](https://img.shields.io/codecov/c/github/lucasconstantino/now-micro.svg?style=flat-square)](https://codecov.io/github/lucasconstantino/now-micro)
-[![npm version](https://img.shields.io/npm/v/now-micro.svg?style=flat-square)](https://www.npmjs.com/package/now-micro)
+[![npm version](https://img.shields.io/npm/v/now-micro.svg?style=flat-square)](https://www.npmjs.com/package/now-micro) [![Greenkeeper badge](https://badges.greenkeeper.io/lucasconstantino/now-micro.svg)](https://greenkeeper.io/)
 
 Proper Micro builder for [Now 2.0](https://zeit.co/blog/now-2)
 
