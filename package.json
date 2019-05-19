@@ -40,10 +40,11 @@
     "testEnvironment": "node"
   },
   "dependencies": {
-    "@now/node": "^0.4.27"
+    "@now/node": "^0.7.2",
+    "fs-extra": "^8.0.1"
   },
   "devDependencies": {
-    "@now/build-utils": "^0.4.31",
+    "@now/build-utils": "^0.5.5",
     "codecov": "^3.0.2",
     "console-suppress": "^0.1.1",
     "eslint": "^4.19.1",
@@ -56,6 +57,6 @@
     "tmp": "^0.0.33"
   },
   "peerDependencies": {
-    "@now/build-utils": "^0.4.31"
+    "@now/build-utils": "^0.5.5"
   }
 }
