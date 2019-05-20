@@ -4,6 +4,7 @@ jest.mock('@now/node', () => ({
   build: ({ files, entrypoint }) => ({ [entrypoint]: files[entrypoint] })
 }))
 
+const { removeSync } = require('fs-extra')
 const tmp = require('tmp')
 const path = require('path')
 const nodeBuilder = require('@now/node')
@@ -51,7 +52,7 @@ describe('now-micro', () => {
 
   afterEach(() => {
     // cleanup temporary directory
-    tempDir.removeCallback()
+    removeSync(tempDir.name)
   })
 
   describe('build', () => {
@@ -67,9 +68,10 @@ describe('now-micro', () => {
         stream: context.files[entrypoints[0]].toStream()
       })).data.toString()
 
-      const {
-        [entrypoints[0]]: { data }
-      } = await build(context)
+      const buildContext = await build(context)
+      const data = (await FileBlob.fromStream({
+        stream: buildContext[entrypoints[0]].toStream()
+      })).data.toString()
 
       expect(data.indexOf(original)).toBe(0)
 
@@ -81,7 +83,9 @@ describe('now-micro', () => {
 
   describe('execution', () => {
     const compile = async entrypoint => {
-      const content = (await build(getContext(entrypoint)))[entrypoint].data
+      const content = (await FileBlob.fromStream({
+        stream: (await build(getContext(entrypoint)))[entrypoint].toStream()
+      })).data.toString()
 
       let exports = {}
       // eslint-disable-next-line no-unused-vars
